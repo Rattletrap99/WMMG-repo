@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Workspace
+   version = "1.0">
+   <FileRef
+      location = "group:WMMGAccount.h">
+   </FileRef>
+   <FileRef
+      location = "group:WMMGAccount.m">
+   </FileRef>
+   <FileRef
+      location = "group:WMMGTransaction.h">
+   </FileRef>
+   <FileRef
+      location = "group:WMMGTransaction.m">
+   </FileRef>
+   <FileRef
+      location = "group:WheredMyMoneyGo/WMMGDataModel.xcdatamodeld">
+   </FileRef>
+   <FileRef
+      location = "group:WheredMyMoneyGo.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:Pods/Pods.xcodeproj">
+   </FileRef>
+</Workspace>

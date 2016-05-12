@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="6254" systemVersion="13F34" minimumToolsVersion="Xcode 4.3" macOSVersion="Automatic" iOSVersion="Automatic">
+    <entity name="WMMGAccount" representedClassName="WMMGAccount" syncable="YES">
+        <attribute name="balance" optional="YES" attributeType="Decimal" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="current" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="replenishedDate" optional="YES" attributeType="Date" syncable="YES"/>
+        <relationship name="toTransactions" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="WMMGTransaction" inverseName="toAccount" inverseEntity="WMMGTransaction" syncable="YES"/>
+    </entity>
+    <entity name="WMMGCategory" representedClassName="WMMGCategory" syncable="YES">
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="toTransactions" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="WMMGTransaction" inverseName="toCategory" inverseEntity="WMMGTransaction" syncable="YES"/>
+    </entity>
+    <entity name="WMMGTransaction" representedClassName="WMMGTransaction" syncable="YES">
+        <attribute name="account" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="amount" optional="YES" attributeType="Decimal" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="category" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="forWhat" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="location" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="paidTo" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="picPath" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="sortDate" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="transDate" optional="YES" attributeType="Date" syncable="YES"/>
+        <relationship name="toAccount" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="WMMGAccount" inverseName="toTransactions" inverseEntity="WMMGAccount" syncable="YES"/>
+        <relationship name="toCategory" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="WMMGCategory" inverseName="toTransactions" inverseEntity="WMMGCategory" syncable="YES"/>
+    </entity>
+    <elements>
+        <element name="WMMGAccount" positionX="-306" positionY="116" width="128" height="120"/>
+        <element name="WMMGCategory" positionX="259" positionY="107" width="128" height="73"/>
+        <element name="WMMGTransaction" positionX="-36" positionY="9" width="128" height="210"/>
+    </elements>
+</model>

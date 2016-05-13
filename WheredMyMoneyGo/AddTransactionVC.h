@@ -24,7 +24,7 @@
 
 @class FirstViewController;
 
-// Delegate for this protocol    is FirstViewController
+// Delegate for this protocol          is FirstViewController
 
 
 @protocol AddTransactionViewControllerDelegate <NSObject>

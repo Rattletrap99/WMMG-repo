@@ -12,7 +12,7 @@
 
 @class AccountSelectVC;
 
-// Delegate for this protocol is AccountSelectVC
+// Delegate for this pro      tocol is AccountSelectVC
 
 @protocol NewAccountDelegate <NSObject>
 

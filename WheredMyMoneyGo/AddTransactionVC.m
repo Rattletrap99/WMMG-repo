@@ -57,7 +57,7 @@ NSString *timeTag;
     NSLog(@"%@", NSStringFromCGRect(self.viewFinder.frame));
     
     self.shutterButton.layer.backgroundColor = [[UIColor redColor] CGColor];
-    [self.shutterButton.layer setCornerRadius:self.shutterButton.frame.size.width/2.0f];
+//    [self.shutterButton.layer setCornerRadius:self.shutterButton.frame.size.width/2.0f];
     self.shutterButton.layer.borderWidth = 3.0f;
     self.shutterButton.layer.borderColor = [[UIColor whiteColor] CGColor];
 

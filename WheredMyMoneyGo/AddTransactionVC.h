@@ -65,6 +65,8 @@
 
 @property (nonatomic, strong) FastttCamera *fastCamera;
 
+@property (weak, nonatomic) IBOutlet UIButton *picOkButton;
+@property (weak, nonatomic) IBOutlet UIButton *newPicButton;
 
 @property (weak, nonatomic) IBOutlet UIButton *shutterButton;
 

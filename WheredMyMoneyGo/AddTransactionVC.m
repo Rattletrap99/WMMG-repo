@@ -369,6 +369,10 @@ NSString *timeTag;
     return YES;
 }
 
+- (IBAction)picOkButtonClicked:(UIButton *)sender {
+}
 
+- (IBAction)newPicButtonClicked:(UIButton *)sender {
+}
 
 @end

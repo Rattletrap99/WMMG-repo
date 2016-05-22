@@ -44,17 +44,17 @@
 
 
 @property (weak, nonatomic) IBOutlet UITextField *amountField;
-@property (weak, nonatomic) IBOutlet UITextField *payeeField;
-
-@property (weak, nonatomic) IBOutlet UITextField *forWhatField;
+//@property (weak, nonatomic) IBOutlet UITextField *payeeField;
+//
+//@property (weak, nonatomic) IBOutlet UITextField *forWhatField;
 @property (weak, nonatomic) IBOutlet UIImageView *imageWell;
 @property (weak, nonatomic) UIButton *selCatButton;
 
 @property (nonatomic, weak) id <AddTransactionViewControllerDelegate> delegate;
 
-@property (weak, nonatomic) IBOutlet UILabel *categoryLabel;
-
-@property (weak, nonatomic) IBOutlet UILabel *accountLabel;
+//@property (weak, nonatomic) IBOutlet UILabel *categoryLabel;
+//
+//@property (weak, nonatomic) IBOutlet UILabel *accountLabel;
 
 @property (strong, nonatomic) WMMGAccount *prevailingAccount;
 
@@ -66,21 +66,10 @@
 @property (nonatomic, strong) FastttCamera *fastCamera;
 
 @property (weak, nonatomic) IBOutlet UIButton *picOkButton;
-@property (weak, nonatomic) IBOutlet UIButton *newPicButton;
+
+@property (weak, nonatomic) IBOutlet UIButton *nooPicButton;
 
 @property (weak, nonatomic) IBOutlet UIButton *shutterButton;
-
-
-
-
-
-
-
-//@property (nonatomic, strong) CameraSessionView *cameraView;
-
-
-
-//@property (strong, nonatomic) FirstViewController *fvcProxy;
 
 
 @end

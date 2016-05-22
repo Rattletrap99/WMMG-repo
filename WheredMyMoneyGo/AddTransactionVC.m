@@ -327,8 +327,21 @@ NSString *timeTag;
 {
     
     [self.fastCamera takePicture];
-    //    self.fastCamera = nil;
-//    [self.fastCamera.cam didFinishScalingCapturedImage];
+    
+    [UIView animateWithDuration:0.5f animations:^{
+        
+        [self.picOkButton setAlpha:1.0f];
+        
+    } completion:nil];
+    
+    [self.fastCamera takePicture];
+    
+    [UIView animateWithDuration:0.5f animations:^{
+        
+        [self.nooPicButton setAlpha:1.0f];
+        
+    } completion:nil];
+
 }
 
 

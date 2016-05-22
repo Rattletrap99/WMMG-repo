@@ -26,7 +26,7 @@ NSString *timeTag;
     CatSelectTVC *catSelVC = [[CatSelectTVC alloc]init];
     catSelVC.delegate = self;
     //    self.accountLabel.text = self.fvcProxy.currentAccount.name;
-    
+    [self.nooPicButton setAlpha:0.0f];
     
     self.sectionDateFormatter = [[NSDateFormatter alloc] init];
     [self.sectionDateFormatter setDateStyle:NSDateFormatterFullStyle];
@@ -37,27 +37,43 @@ NSString *timeTag;
     [self.cellDateFormatter setTimeStyle:NSDateFormatterShortStyle];
     
     self.amountField.delegate = self;
-    self.payeeField.delegate = self;
-    self.forWhatField.delegate = self;
+//    self.payeeField.delegate = self;
+//    self.forWhatField.delegate = self;
     
     self.amountField.autocorrectionType = UITextAutocorrectionTypeNo;
-    self.payeeField.autocorrectionType = UITextAutocorrectionTypeNo;
-    self.forWhatField.autocorrectionType = UITextAutocorrectionTypeNo;
+//    self.payeeField.autocorrectionType = UITextAutocorrectionTypeNo;
+//    self.forWhatField.autocorrectionType = UITextAutocorrectionTypeNo;
 
     _fastCamera = [FastttCamera new];
     self.fastCamera.delegate = self;
     
-    
-    
-    
-    
+   
     [self fastttAddChildViewController:self.fastCamera];
-    [self.fastCamera.view setFrame:self.viewFinder.frame];
+    
+    
+    
+    [self.fastCamera.view setFrame:self.viewFinder.frame]; //Call this to reset frame upon New Pic button tap...
+    
+    
+    
     
     NSLog(@"%@", NSStringFromCGRect(self.viewFinder.frame));
     
+    NSLog(@"%@", NSStringFromCGRect(self.shutterButton.frame));
+
+    
     self.shutterButton.layer.backgroundColor = [[UIColor redColor] CGColor];
 //    [self.shutterButton.layer setCornerRadius:self.shutterButton.frame.size.width/2.0f];
+    
+    [UIView animateWithDuration:0.5f animations:^{
+        
+        [self.tapPicLabel setAlpha:1.0f];
+        
+    } completion:nil];
+
+    
+    
+    
     self.shutterButton.layer.borderWidth = 3.0f;
     self.shutterButton.layer.borderColor = [[UIColor whiteColor] CGColor];
 
@@ -177,9 +193,9 @@ NSString *timeTag;
 -(void) assembleAndSaveTransaction
 {
     self.thisTransaction.transDate = [NSDate date];
-    self.thisTransaction.paidTo = self.payeeField.text;
+//    self.thisTransaction.paidTo = self.payeeField.text;
     
-    self.thisTransaction.forWhat = self.forWhatField.text;
+//    self.thisTransaction.forWhat = self.forWhatField.text;
     self.thisTransaction.sortDate = [self sortDateForDate:self.thisTransaction.transDate];
     
     [pngData writeToFile:filePath atomically:YES]; //Write the file
@@ -230,7 +246,7 @@ NSString *timeTag;
     //    self.thisTransaction.category = selectedCategory.name;
     
     // This line displays the selected category's name in the label
-    self.categoryLabel.text = selectedCategory.name;
+//    self.categoryLabel.text = selectedCategory.name;
     
     // This line correctly logs the category eg, "(AddTransVC 1) The selected category is named EATING OUT"
 //    NSLog(@"(AddTransVC 1) The selected category is named %@",selectedCategory.name);
@@ -307,32 +323,16 @@ NSString *timeTag;
 }
 
 
-- (IBAction)snapPicButton:(UIButton *)sender
-{
-//    _fastCamera = [FastttCamera new];
-//    self.fastCamera.delegate = self;
-//    
-//    [self fastttAddChildViewController:self.fastCamera];
-//    [self.fastCamera.view setFrame:self.viewFinder.frame];
-//    
-//    //    CGRect vfRect = self.viewFinder.frame;
-//    
-//    NSString *rectString = NSStringFromCGRect(self.viewFinder.frame);
-//    
-//    NSLog(@"ViewFinder.frame == %@",rectString);
-}
-
-
 - (IBAction)pictureButtonTapped:(UIButton *)sender
 {
     
-    [self.fastCamera takePicture];
-    
-    [UIView animateWithDuration:0.5f animations:^{
-        
-        [self.picOkButton setAlpha:1.0f];
-        
-    } completion:nil];
+//    [self.fastCamera takePicture];
+//    
+//    [UIView animateWithDuration:0.5f animations:^{
+//        
+//        [self.picOkButton setAlpha:1.0f];
+//        
+//    } completion:nil];
     
     [self.fastCamera takePicture];
     
@@ -359,8 +359,6 @@ NSString *timeTag;
     NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
     NSString *documentsPath = [paths objectAtIndex:0]; //Get the docs directory
     
-
-    
     int timestamp = [[NSDate date] timeIntervalSince1970];
     
     timeTag = [NSString stringWithFormat:@"%d",timestamp];
@@ -382,10 +380,14 @@ NSString *timeTag;
     return YES;
 }
 
-- (IBAction)picOkButtonClicked:(UIButton *)sender {
-}
+//- (IBAction)picOkButtonClicked:(UIButton *)sender {
+//}
 
-- (IBAction)newPicButtonClicked:(UIButton *)sender {
+- (IBAction)newPicButtonClicked:(UIButton *)sender
+{
+    self.imageWell.image = nil;
+    
+    
 }
 
 @end

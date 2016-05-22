@@ -71,5 +71,6 @@
 
 @property (weak, nonatomic) IBOutlet UIButton *shutterButton;
 
+@property (weak, nonatomic) IBOutlet UILabel *tapPicLabel;
 
 @end

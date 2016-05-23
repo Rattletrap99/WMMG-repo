@@ -47,7 +47,7 @@
 //@property (weak, nonatomic) IBOutlet UITextField *payeeField;
 //
 //@property (weak, nonatomic) IBOutlet UITextField *forWhatField;
-@property (weak, nonatomic) IBOutlet UIImageView *imageWell;
+//@property (weak, nonatomic) IBOutlet UIImageView *imageWell;
 @property (weak, nonatomic) UIButton *selCatButton;
 
 @property (nonatomic, weak) id <AddTransactionViewControllerDelegate> delegate;

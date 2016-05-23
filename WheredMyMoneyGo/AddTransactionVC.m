@@ -62,7 +62,7 @@ NSString *timeTag;
     NSLog(@"%@", NSStringFromCGRect(self.shutterButton.frame));
 
     
-    self.shutterButton.layer.backgroundColor = [[UIColor redColor] CGColor];
+//    self.shutterButton.layer.backgroundColor = [[UIColor redColor] CGColor];
 //    [self.shutterButton.layer setCornerRadius:self.shutterButton.frame.size.width/2.0f];
     
     [UIView animateWithDuration:0.5f animations:^{
@@ -72,19 +72,20 @@ NSString *timeTag;
     } completion:nil];
 
     
-    
-    
-    self.shutterButton.layer.borderWidth = 3.0f;
-    self.shutterButton.layer.borderColor = [[UIColor whiteColor] CGColor];
-
-    self.viewFinder.layer.borderWidth = .5f;
-    self.viewFinder.layer.borderColor = [[UIColor darkGrayColor] CGColor];
-
-    self.imageWell.layer.borderWidth = .5f;
-    self.imageWell.layer.borderColor = [[UIColor darkGrayColor] CGColor];
+    self.shutterButton.userInteractionEnabled = YES;
 
     
+//    self.shutterButton.layer.borderWidth = 3.0f;
+//    self.shutterButton.layer.borderColor = [[UIColor whiteColor] CGColor];
+//
+//    self.viewFinder.layer.borderWidth = .5f;
+//    self.viewFinder.layer.borderColor = [[UIColor darkGrayColor] CGColor];
+
+//    self.imageWell.layer.borderWidth = .5f;
+//    self.imageWell.layer.borderColor = [[UIColor darkGrayColor] CGColor];
+
     
+    self.shutterButton.frame = self.viewFinder.frame;
     
     NSString *rectString = NSStringFromCGRect(self.viewFinder.frame);
     
@@ -157,7 +158,7 @@ NSString *timeTag;
 //    NSLog(@"(AddTransVC 2) The selected category is named %@",self.thisTransaction.category);
     
     
-    if (self.amountField.text.length > 0 && self.imageWell.image)
+    if (self.amountField.text.length > 0 && self.viewFinder.image)
     {
         self.thisTransaction.amount = [NSDecimalNumber decimalNumberWithString:self.amountField.text locale:NSLocale.currentLocale];
         
@@ -351,7 +352,21 @@ NSString *timeTag;
 - (void)cameraController:(FastttCamera *)cameraController didFinishNormalizingCapturedImage:(FastttCapturedImage *)capturedImage;
 {
     //Use the image's data that is received
-    pngData = UIImagePNGRepresentation(capturedImage.scaledImage);
+    
+    
+    
+    
+    // ******************************
+    
+    pngData = UIImagePNGRepresentation(capturedImage.fullImage); // Try "fullImage" Here
+    
+    // ******************************
+
+    
+    
+    
+    
+    
     
     NSLog(@"1 The size of pngData should be %lu",(unsigned long)pngData.length);
     
@@ -370,7 +385,18 @@ NSString *timeTag;
     
     //    cameraController = nil;
     
-    [self.imageWell setImage:capturedImage.scaledImage];
+    
+    
+    // **************
+    self.viewFinder.image = nil;
+
+    [self.viewFinder setImage:capturedImage.scaledImage]; // Changed from imageWell, which will be deleted. Set this to nil upon New Pic button tap...
+    
+    // **************
+
+    
+    
+    
 }
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField
@@ -385,9 +411,8 @@ NSString *timeTag;
 
 - (IBAction)newPicButtonClicked:(UIButton *)sender
 {
-    self.imageWell.image = nil;
-    
-    
+    self.viewFinder.image = nil;
+    [self.nooPicButton setAlpha:0.0];
 }
 
 @end
